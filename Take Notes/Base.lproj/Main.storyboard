@@ -35,6 +35,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Baw-gl-6Si" id="kHm-a7-dJY"/>
+                                    <outlet property="delegate" destination="Baw-gl-6Si" id="QDZ-dM-oxc"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -50,6 +54,9 @@
                         <viewLayoutGuide key="safeArea" id="GYv-SH-Lv8"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="doc.plaintext" catalog="system" id="n4d-Eg-waS"/>
+                    <connections>
+                        <outlet property="tableView" destination="DAW-V7-RFH" id="Mof-Zs-NXO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Swc-Yz-UKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -111,6 +118,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBound" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="ihl-kk-GSA" eventType="touchUpInside" id="d8o-Pn-uWw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -130,6 +140,9 @@
                         <viewLayoutGuide key="safeArea" id="ZQ1-j9-w6r"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="square.and.pencil" catalog="system" id="Azu-4h-dtz"/>
+                    <connections>
+                        <outlet property="textView" destination="pd6-pa-9oJ" id="ytX-Lc-O16"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mze-1h-ECo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
