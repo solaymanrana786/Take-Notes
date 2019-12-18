@@ -19,7 +19,14 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="Notes" id="NwF-Th-9ab"/>
+                                    <navigationItem title="Notes" id="NwF-Th-9ab">
+                                        <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="nPN-lQ-e8s">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="createNew:" destination="Baw-gl-6Si" id="5ot-KH-v4I"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DAW-V7-RFH">
@@ -27,14 +34,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" id="jla-vp-rFn" customClass="TableViewCell" customModule="Take_Notes" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="31"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="31.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jla-vp-rFn" id="Y1A-mL-4of">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="31"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="31.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZq-fH-65V">
-                                                    <rect key="frame" x="5" y="5" width="404" height="21"/>
+                                                    <rect key="frame" x="5" y="5" width="404" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -92,80 +99,11 @@
                     </tabBar>
                     <connections>
                         <segue destination="Baw-gl-6Si" kind="relationship" relationship="viewControllers" id="ERl-jH-qZv"/>
-                        <segue destination="ihl-kk-GSA" kind="relationship" relationship="viewControllers" id="FMW-cZ-olk"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cc6-WL-Fqn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
-        </scene>
-        <!--Create Note View Controller-->
-        <scene sceneID="HU2-Lt-ab9">
-            <objects>
-                <viewController id="ihl-kk-GSA" customClass="CreateNoteViewController" customModule="Take_Notes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ptx-gu-Z0K">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dru-cg-Voh">
-                                <rect key="frame" x="0.0" y="39" width="414" height="44"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem title="Take a note" id="Sbn-oV-See"/>
-                                </items>
-                            </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pd6-pa-9oJ">
-                                <rect key="frame" x="20" y="103" width="374" height="336"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fae-tv-TBl">
-                                <rect key="frame" x="147" y="455" width="120" height="60"/>
-                                <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="CI7-MN-y17"/>
-                                    <constraint firstAttribute="height" constant="60" id="QDB-iG-xrI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="7"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBound" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="ihl-kk-GSA" eventType="touchUpInside" id="d8o-Pn-uWw"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Dru-cg-Voh" firstAttribute="top" secondItem="Ptx-gu-Z0K" secondAttribute="top" constant="39" id="5lz-mf-moJ"/>
-                            <constraint firstItem="pd6-pa-9oJ" firstAttribute="top" secondItem="Dru-cg-Voh" secondAttribute="bottom" constant="20" id="B8W-OF-APQ"/>
-                            <constraint firstItem="Dru-cg-Voh" firstAttribute="leading" secondItem="ZQ1-j9-w6r" secondAttribute="leading" id="BYx-uz-oJZ"/>
-                            <constraint firstItem="fae-tv-TBl" firstAttribute="centerX" secondItem="Ptx-gu-Z0K" secondAttribute="centerX" id="Des-Qh-x2v"/>
-                            <constraint firstItem="fae-tv-TBl" firstAttribute="top" secondItem="pd6-pa-9oJ" secondAttribute="bottom" constant="16" id="UuJ-Tp-RUc"/>
-                            <constraint firstItem="pd6-pa-9oJ" firstAttribute="centerY" secondItem="Ptx-gu-Z0K" secondAttribute="centerY" constant="-177" id="b9T-u8-9F9"/>
-                            <constraint firstItem="pd6-pa-9oJ" firstAttribute="centerX" secondItem="Ptx-gu-Z0K" secondAttribute="centerX" id="kxm-gL-rEQ"/>
-                            <constraint firstItem="Dru-cg-Voh" firstAttribute="trailing" secondItem="ZQ1-j9-w6r" secondAttribute="trailing" id="p1C-71-Y7t"/>
-                            <constraint firstItem="pd6-pa-9oJ" firstAttribute="leading" secondItem="ZQ1-j9-w6r" secondAttribute="leading" constant="20" id="sdX-ts-Xxu"/>
-                            <constraint firstItem="ZQ1-j9-w6r" firstAttribute="bottom" secondItem="pd6-pa-9oJ" secondAttribute="bottom" constant="374" id="u6c-jt-i9Z"/>
-                            <constraint firstItem="ZQ1-j9-w6r" firstAttribute="trailing" secondItem="pd6-pa-9oJ" secondAttribute="trailing" constant="20" id="x49-Wp-taK"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ZQ1-j9-w6r"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="square.and.pencil" catalog="system" id="Azu-4h-dtz"/>
-                    <connections>
-                        <outlet property="textView" destination="pd6-pa-9oJ" id="ytX-Lc-O16"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mze-1h-ECo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="908.69565217391312" y="127.90178571428571"/>
         </scene>
     </scenes>
     <resources>
