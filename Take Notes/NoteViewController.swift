@@ -62,25 +62,30 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return true
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let cell = tableView.cellForRow(at: indexPath)
+        
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            let alert = UIAlertController(title: "", message: "Edit item", preferredStyle: .alert)
-            alert.addTextField(configurationHandler: { (textField) in
-                textField.text = self.noteData[indexPath.row]
-            })
-            alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
-                self.noteData[indexPath.row] = alert.textFields!.first!.text!
-                
-                let txt = self.noteData[indexPath.row]
-//                self.ref?.child("Notes").childByAutoId().setValue(txt)
-                let keyid = self.key[indexPath.row]
-                self.ref?.child("Notes").child(keyid).setValue(txt)
-                self.tableView.reloadRows(at: [indexPath], with: .fade)
-                
-            }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(alert, animated: false)
-        })
+//        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+//            let alert = UIAlertController(title: "", message: "Edit item", preferredStyle: .alert)
+//            alert.addTextField(configurationHandler: { (textField) in
+//                textField.text = self.noteData[indexPath.row]
+//            })
+//            alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
+//                self.noteData[indexPath.row] = alert.textFields!.first!.text!
+//
+//                let txt = self.noteData[indexPath.row]
+////                self.ref?.child("Notes").childByAutoId().setValue(txt)
+//                let keyid = self.key[indexPath.row]
+//                self.ref?.child("Notes").child(keyid).setValue(txt)
+//                self.tableView.reloadRows(at: [indexPath], with: .fade)
+//
+//            }))
+//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//            self.present(alert, animated: false)
+//        })
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             self.noteData.remove(at: indexPath.row)
@@ -90,45 +95,12 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             tableView.reloadData()
         })
         
-        return [deleteAction, editAction]
-    }
-    
-    
-    func alertWithTF() {
-        //Step : 1
-        let alert = UIAlertController(title: "Notes", message: "create notes", preferredStyle: UIAlertController.Style.alert )
-        //Step : 2
-        let save = UIAlertAction(title: "Save", style: .default) { (alertAction) in
-            let textField = alert.textFields![0] as UITextField
-            if textField.text != "" {
-                //Read TextFields text data
-                self.text = textField.text!
-                self.ref?.child("Notes").childByAutoId().setValue(self.text)
-                print("TF  : \(textField.text!)")
-            } else {
-                print("TF is Empty...")
-            }
-        }
-        //Step : 3
-        //For first TF
-        alert.addTextField { (textField) in
-            textField.placeholder = "Enter your notes here"
-            textField.textColor = .red
-        }
-        //Step : 4
-        alert.addAction(save)
-        //Cancel action
-        let cancel = UIAlertAction(title: "Cancel", style: .default) { (alertAction) in }
-        alert.addAction(cancel)
-        //OR single line action
-        //alert.addAction(UIAlertAction(title: "Cancel", style: .default) { (alertAction) in })
-        
-        self.present(alert, animated:true, completion: nil)
-        
+        return [deleteAction]
     }
     
     @IBAction func createNew(_ sender: UIBarButtonItem) {
-        
-        alertWithTF()
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        self.present(nextViewController, animated:true, completion:nil)
     }
 }
