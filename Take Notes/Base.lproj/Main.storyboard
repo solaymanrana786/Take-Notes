@@ -34,14 +34,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" id="jla-vp-rFn" customClass="TableViewCell" customModule="Take_Notes" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="31"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="31.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jla-vp-rFn" id="Y1A-mL-4of">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="31"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="31.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZq-fH-65V">
-                                                    <rect key="frame" x="5" y="5" width="404" height="21"/>
+                                                    <rect key="frame" x="5" y="5" width="404" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Swc-Yz-UKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-26" y="140"/>
+            <point key="canvasLocation" x="174" y="140"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ZgL-Og-lmP">
@@ -141,6 +141,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TTe-Y7-s16" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="911.59420289855075" y="139.95535714285714"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="IfY-JW-gdO">
+            <objects>
+                <viewController storyboardIdentifier="EditViewController" id="1dJ-I8-yQB" customClass="EditViewController" customModule="Take_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kM7-Ix-bCj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VwE-zs-e3Q">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="Edit Note" id="tDe-8H-cwq">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="GLQ-ub-laP">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="backTapped:" destination="1dJ-I8-yQB" id="3e1-Hp-Jyu"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="F2l-Ox-xu4">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="saveTapped:" destination="1dJ-I8-yQB" id="5B2-dT-Gnw"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ICV-tR-aYv">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VwE-zs-e3Q" firstAttribute="top" secondItem="IOy-k5-zgv" secondAttribute="top" id="ALP-Z3-B7T"/>
+                            <constraint firstItem="ICV-tR-aYv" firstAttribute="bottom" secondItem="IOy-k5-zgv" secondAttribute="bottom" id="kNS-7W-P1Z"/>
+                            <constraint firstItem="VwE-zs-e3Q" firstAttribute="trailing" secondItem="IOy-k5-zgv" secondAttribute="trailing" id="lpc-NO-7S3"/>
+                            <constraint firstItem="ICV-tR-aYv" firstAttribute="leading" secondItem="IOy-k5-zgv" secondAttribute="leading" id="nyC-9a-I6I"/>
+                            <constraint firstItem="VwE-zs-e3Q" firstAttribute="leading" secondItem="IOy-k5-zgv" secondAttribute="leading" id="uRz-QL-CRp"/>
+                            <constraint firstItem="ICV-tR-aYv" firstAttribute="trailing" secondItem="IOy-k5-zgv" secondAttribute="trailing" id="wLW-Sd-btu"/>
+                            <constraint firstItem="ICV-tR-aYv" firstAttribute="top" secondItem="VwE-zs-e3Q" secondAttribute="bottom" id="x0j-Bw-saP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IOy-k5-zgv"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="ICV-tR-aYv" id="gO8-Kt-uAD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQQ-G3-ORN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-609" y="140"/>
         </scene>
     </scenes>
     <resources>

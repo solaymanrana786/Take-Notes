@@ -63,7 +63,19 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let cell = tableView.cellForRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+         
+          let data = noteData[indexPath.row]
+        let keyy = key[indexPath.row]
+         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc1 = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+        vc1.text = data
+        vc1.key = keyy
+       
+        //vc1.modalPresentationStyle = .fullScreen
+        self.present(vc1, animated: true)
+         
         
     }
     
@@ -97,6 +109,8 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         return [deleteAction]
     }
+    
+    
     
     @IBAction func createNew(_ sender: UIBarButtonItem) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
