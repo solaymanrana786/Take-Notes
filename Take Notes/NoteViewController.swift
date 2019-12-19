@@ -23,27 +23,32 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad()")
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
-        ref = Database.database().reference()
-        
-        databaseHandle = ref?.child("Notes").observe(.childAdded, with: { (snapshot) in
-            //to execute when a child is added under notes
-            //take the value from snapshot and put into notedata array
-            let note = snapshot.value as? String
-            let key = snapshot.key
-            print("Key  : ",key)
-            
-            print("Added: \(note!)")
-            if let actualNote = note {
-                self.noteData.append(actualNote)
-                self.key.append(key)
-                self.tableView.reloadData()
-            }
-        })
-        
         // ref?.child("Notes").childByAutoId().setValue(text)
+    }
+    
+    func fetchData() {
+        ref = Database.database().reference()
+             self.noteData.removeAll()
+            databaseHandle = ref?.child("Notes").observe(.childAdded, with: { (snapshot) in
+                //to execute when a child is added under notes
+                //take the value from snapshot and put into notedata array
+                let note = snapshot.value as? String
+                let key = snapshot.key
+                print("Key  : ",key)
+                
+                print("Added: \(note!)")
+               
+                if let actualNote = note {
+                    self.noteData.insert(actualNote, at: 0)
+                    self.key.append(key)
+                    self.tableView.reloadData()
+                }
+            })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,19 +70,32 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
          
-          let data = noteData[indexPath.row]
+        let data = noteData[indexPath.row]
         let keyy = key[indexPath.row]
-         
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc1 = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
         vc1.text = data
         vc1.key = keyy
-       
+        vc1.modalPresentationStyle = .fullScreen
+
         //vc1.modalPresentationStyle = .fullScreen
         self.present(vc1, animated: true)
-         
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear()")
+        fetchData()
         
     }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        print("viewWillDisappear()")
+//    }
+//
+//    override func viewDidAppear(_ animated: Bool) {
+//        print("viewDidAppear()")
+//    }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 //        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
@@ -100,10 +118,11 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 //        })
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-            self.noteData.remove(at: indexPath.row)
+            //self.noteData.remove(at: indexPath.row)
             let keyid = self.key[indexPath.row]
-            print("delete:",keyid)
+           
             self.ref?.child("Notes").child(keyid).removeValue()
+            print("delete:",keyid)
             tableView.reloadData()
         })
         
