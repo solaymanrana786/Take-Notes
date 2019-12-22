@@ -45,10 +45,11 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                
                 if let actualNote = note {
                     self.noteData.insert(actualNote, at: 0)
-                    self.key.append(key)
+                    self.key.insert(key, at: 0)
                     self.tableView.reloadData()
                 }
             })
+      
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,7 +119,7 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 //        })
         
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-            //self.noteData.remove(at: indexPath.row)
+            self.noteData.remove(at: indexPath.row)
             let keyid = self.key[indexPath.row]
            
             self.ref?.child("Notes").child(keyid).removeValue()

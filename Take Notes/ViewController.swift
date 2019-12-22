@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         //Read TextFields text data
         self.text = inputTextView.text
         self.ref?.child("Notes").childByAutoId().setValue(self.text)
+            
         } else {
             print("TV is Empty...")
         }

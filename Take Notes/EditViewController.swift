@@ -25,10 +25,12 @@ class EditViewController: UIViewController {
         
         textView.text = text
         
-       
     }
     
     @IBAction func backTapped(_ sender: Any) {
+        newtxt = textView.text
+        self.ref?.child("Notes").child(self.key).setValue(self.newtxt)
+       // self.ref?.child("Notes").updateChildValues()
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -38,5 +40,4 @@ class EditViewController: UIViewController {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
  
-
 }
