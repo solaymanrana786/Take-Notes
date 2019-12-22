@@ -63,7 +63,6 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
            notesRef.observe(.value, with: { snapshot in
                
                var tempNotes = [Note]()
-               
                for child in snapshot.children {
                    if let childSnapshot = child as? DataSnapshot,
                        let dict = childSnapshot.value as? [String:Any],
@@ -98,47 +97,53 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
+    
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let note =  notes[indexPath.row]
+        
+        let data = noteData[indexPath.row]
+        let keyy = key[indexPath.row]
+        self.noteData.remove(at: indexPath.row)
+        self.key.remove(at: indexPath.row)
+        //self.ref?.child("notes").child(note).removeValue()
+
+
+//        let temp = noteData[0]
+//        noteData[0] = data
+//        noteData[indexPath.row] = temp
 //
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//        let data = noteData[indexPath.row]
-//        let keyy = key[indexPath.row]
-//        self.noteData.remove(at: indexPath.row)
-//        self.key.remove(at: indexPath.row)
-////        self.ref?.child("Notes").child(key[indexPath.row]).removeValue()
-//
-//
-////        let temp = noteData[0]
-////        noteData[0] = data
-////        noteData[indexPath.row] = temp
-////
-////        let tempKey = key[0]
-////        key[0] = keyy
-////        key[indexPath.row] = tempKey
-////
-////
-////         noteData.remove(at: indexPath.row)
-////        noteData.insert(data, at: 0)
-////         key.remove(at: indexPath.row)
-////        key.insert(keyy, at: 0)
-//       // self.tableView.reloadData()
-//
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc1 = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
-//        vc1.text = data
-//        vc1.key = keyy
-////        self.ref?.child("Notes").child(keyy).removeValue()
-////        vc1.modalPresentationStyle = .fullScreen
-//
-//        //vc1.modalPresentationStyle = .fullScreen
-//        self.present(vc1, animated: true)
+//        let tempKey = key[0]
+//        key[0] = keyy
+//        key[indexPath.row] = tempKey
 //
 //
-//    }
+//         noteData.remove(at: indexPath.row)
+//        noteData.insert(data, at: 0)
+//         key.remove(at: indexPath.row)
+//        key.insert(keyy, at: 0)
+       // self.tableView.reloadData()
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc1 = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+        vc1.text = data
+        vc1.key = keyy
+//        self.ref?.child("Notes").child(keyy).removeValue()
+//        vc1.modalPresentationStyle = .fullScreen
+
+        //vc1.modalPresentationStyle = .fullScreen
+        self.present(vc1, animated: true)
+
+
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear()")
@@ -146,20 +151,20 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         observePosts()
     }
 
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//
-//        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-//            self.noteData.remove(at: indexPath.row)
-//            let keyid = self.key[indexPath.row]
-//
-//            self.ref?.child("Notes").child(keyid).removeValue()
-//            print("delete:",keyid)
-//            tableView.reloadData()
-//        })
-//
-//        return [deleteAction]
-//    }
-//
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            self.noteData.remove(at: indexPath.row)
+            let keyid = self.key[indexPath.row]
+
+            self.ref?.child("Notes").child(keyid).removeValue()
+            print("delete:",keyid)
+            tableView.reloadData()
+        })
+
+        return [deleteAction]
+    }
+
     
     
     @IBAction func createNew(_ sender: UIBarButtonItem) {

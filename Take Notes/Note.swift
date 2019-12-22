@@ -17,3 +17,4 @@ class Note {
         self.timestamp = timestamp
     }
 }
+
