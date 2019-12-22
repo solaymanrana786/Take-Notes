@@ -21,22 +21,24 @@ class ViewController: UIViewController {
         ref = Database.database().reference()
       
     }
-
+    func save(){
+        if inputTextView.text != ""{
+               //Read TextFields text data
+               self.text = inputTextView.text
+               self.ref?.child("Notes").childByAutoId().setValue(self.text)
+                   
+               } else {
+                   print("TV is Empty...")
+               }
+                 self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func onSaveButtonTapped(_ sender: UIBarButtonItem) {
-        if inputTextView.text != ""{
-        //Read TextFields text data
-        self.text = inputTextView.text
-        self.ref?.child("Notes").childByAutoId().setValue(self.text)
-            
-        } else {
-            print("TV is Empty...")
-        }
-          self.presentingViewController?.dismiss(animated: true, completion: nil)
+       save()
     }
         
     @IBAction func onBackButtonTapped(_ sender: UIBarButtonItem) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        save()
     }
 
 }

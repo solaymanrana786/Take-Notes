@@ -44,6 +44,8 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 print("Added: \(note!)")
                
                 if let actualNote = note {
+//                    self.noteData.append(actualNote)
+//                    self.key.append(key)
                     self.noteData.insert(actualNote, at: 0)
                     self.key.insert(key, at: 0)
                     self.tableView.reloadData()
@@ -73,15 +75,36 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
          
         let data = noteData[indexPath.row]
         let keyy = key[indexPath.row]
+        self.noteData.remove(at: indexPath.row)
+        self.key.remove(at: indexPath.row)
+//        self.ref?.child("Notes").child(key[indexPath.row]).removeValue()
         
+        
+//        let temp = noteData[0]
+//        noteData[0] = data
+//        noteData[indexPath.row] = temp
+//
+//        let tempKey = key[0]
+//        key[0] = keyy
+//        key[indexPath.row] = tempKey
+//
+//
+//         noteData.remove(at: indexPath.row)
+//        noteData.insert(data, at: 0)
+//         key.remove(at: indexPath.row)
+//        key.insert(keyy, at: 0)
+       // self.tableView.reloadData()
+       
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc1 = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
         vc1.text = data
         vc1.key = keyy
-        vc1.modalPresentationStyle = .fullScreen
+//        self.ref?.child("Notes").child(keyy).removeValue()
+//        vc1.modalPresentationStyle = .fullScreen
 
         //vc1.modalPresentationStyle = .fullScreen
         self.present(vc1, animated: true)
+        
 
     }
     
@@ -90,34 +113,9 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         fetchData()
         
     }
-//    override func viewWillDisappear(_ animated: Bool) {
-//        print("viewWillDisappear()")
-//    }
-//
-//    override func viewDidAppear(_ animated: Bool) {
-//        print("viewDidAppear()")
-//    }
-    
+
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-//            let alert = UIAlertController(title: "", message: "Edit item", preferredStyle: .alert)
-//            alert.addTextField(configurationHandler: { (textField) in
-//                textField.text = self.noteData[indexPath.row]
-//            })
-//            alert.addAction(UIAlertAction(title: "Update", style: .default, handler: { (updateAction) in
-//                self.noteData[indexPath.row] = alert.textFields!.first!.text!
-//
-//                let txt = self.noteData[indexPath.row]
-////                self.ref?.child("Notes").childByAutoId().setValue(txt)
-//                let keyid = self.key[indexPath.row]
-//                self.ref?.child("Notes").child(keyid).setValue(txt)
-//                self.tableView.reloadRows(at: [indexPath], with: .fade)
-//
-//            }))
-//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//            self.present(alert, animated: false)
-//        })
-        
+
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             self.noteData.remove(at: indexPath.row)
             let keyid = self.key[indexPath.row]
@@ -135,6 +133,7 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBAction func createNew(_ sender: UIBarButtonItem) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+       
         self.present(nextViewController, animated:true, completion:nil)
     }
 }
