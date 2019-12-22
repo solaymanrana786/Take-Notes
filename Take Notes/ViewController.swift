@@ -34,12 +34,32 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onSaveButtonTapped(_ sender: UIBarButtonItem) {
-       save()
+//       save()
+        add()
+        
     }
         
     @IBAction func onBackButtonTapped(_ sender: UIBarButtonItem) {
         save()
     }
 
-}
+    func add(){
+        let noteRef = Database.database().reference().child("notes").childByAutoId()
+            
+            let noteObject = [
+                "text": inputTextView.text!,
+                "timestamp": [".sv":"timestamp"]
+                ] as [String : Any]
+            
+           noteRef.setValue(noteObject, withCompletionBlock: { error, ref in
+                if error == nil {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    // Handle the error
+                }
+            })
+        }
+    }
+    
+
 

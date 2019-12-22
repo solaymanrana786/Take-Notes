@@ -33,29 +33,40 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" id="jla-vp-rFn" customClass="TableViewCell" customModule="Take_Notes" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="31.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" rowHeight="50" id="jla-vp-rFn" customClass="TableViewCell" customModule="Take_Notes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jla-vp-rFn" id="Y1A-mL-4of">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="31.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZq-fH-65V">
-                                                    <rect key="frame" x="5" y="5" width="404" height="21.5"/>
+                                                    <rect key="frame" x="5" y="5" width="404" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09/12/19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMw-AI-GR8">
+                                                    <rect key="frame" x="10" y="30" width="207" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="MZq-fH-65V" firstAttribute="leading" secondItem="Y1A-mL-4of" secondAttribute="leading" constant="5" id="4T5-th-1RU"/>
-                                                <constraint firstItem="MZq-fH-65V" firstAttribute="centerY" secondItem="Y1A-mL-4of" secondAttribute="centerY" id="JNR-Ut-geO"/>
+                                                <constraint firstItem="FMw-AI-GR8" firstAttribute="top" secondItem="Y1A-mL-4of" secondAttribute="top" constant="30" id="6MK-nH-kIa"/>
+                                                <constraint firstItem="FMw-AI-GR8" firstAttribute="leading" secondItem="Y1A-mL-4of" secondAttribute="leading" constant="10" id="E6Q-Ms-gMr"/>
+                                                <constraint firstItem="MZq-fH-65V" firstAttribute="centerY" secondItem="Y1A-mL-4of" secondAttribute="centerY" constant="-7.5" id="JNR-Ut-geO"/>
+                                                <constraint firstAttribute="bottom" secondItem="FMw-AI-GR8" secondAttribute="bottom" constant="5" id="UBs-NX-J90"/>
                                                 <constraint firstAttribute="trailing" secondItem="MZq-fH-65V" secondAttribute="trailing" constant="5" id="Uub-Co-YFG"/>
                                                 <constraint firstItem="MZq-fH-65V" firstAttribute="top" secondItem="Y1A-mL-4of" secondAttribute="top" constant="5" id="Wxh-RP-tyQ"/>
-                                                <constraint firstAttribute="bottom" secondItem="MZq-fH-65V" secondAttribute="bottom" constant="5" id="m25-XA-kRm"/>
+                                                <constraint firstAttribute="bottom" secondItem="MZq-fH-65V" secondAttribute="bottom" constant="20" id="m25-XA-kRm"/>
+                                                <constraint firstAttribute="trailing" secondItem="FMw-AI-GR8" secondAttribute="trailing" constant="197" id="rQB-yH-BFy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="FMw-AI-GR8" id="TuJ-QV-wXg"/>
                                             <outlet property="titleLabel" destination="MZq-fH-65V" id="lvn-WE-QfZ"/>
                                         </connections>
                                     </tableViewCell>
@@ -85,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Swc-Yz-UKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="174" y="140"/>
+            <point key="canvasLocation" x="173.91304347826087" y="139.95535714285714"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ZgL-Og-lmP">

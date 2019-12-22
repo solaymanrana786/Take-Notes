@@ -12,6 +12,7 @@ class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +23,26 @@ class TableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func convertTimestamp(serverTimestamp: Double) -> String {
+        let x = serverTimestamp / 1000
+        let date = NSDate(timeIntervalSince1970: x)
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .short
+       
+
+        return formatter.string(from: date as Date)
+    }
+    
+    func set(note:Note) {
+        titleLabel.text = note.text
+        dateLabel.text = convertTimestamp(serverTimestamp: note.timestamp)
+        
+        
+        print( convertTimestamp(serverTimestamp: note.timestamp))
+        }
+        
+       
 
 }
