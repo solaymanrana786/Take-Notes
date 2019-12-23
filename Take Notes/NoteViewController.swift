@@ -29,6 +29,7 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
+        ref = Database.database().reference()
         // ref?.child("Notes").childByAutoId().setValue(text)
     }
     
@@ -110,13 +111,19 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.deselectRow(at: indexPath, animated: true)
         let note =  notes[indexPath.row]
         
-        let data = noteData[indexPath.row]
-        let keyy = key[indexPath.row]
-        self.noteData.remove(at: indexPath.row)
-        self.key.remove(at: indexPath.row)
+        guard let key = ref?.child("notes").childByAutoId().key else { return }
+        let post = ["text": "Solayman Rana"]
+        let childUpdates = ["/notes/\(key)": post]
+//                            "/user-posts/\(userID)/\(key)/": post]
+        ref?.child("notes").updateChildValues(childUpdates)
+        
+//        let data = noteData[indexPath.row]
+//        let keyy = key[indexPath.row]
+//        self.noteData.remove(at: indexPath.row)
+//        self.key.remove(at: indexPath.row)
         //self.ref?.child("notes").child(note).removeValue()
 
-
+     
 //        let temp = noteData[0]
 //        noteData[0] = data
 //        noteData[indexPath.row] = temp
@@ -134,8 +141,8 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc1 = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
-        vc1.text = data
-        vc1.key = keyy
+//        vc1.text = data
+//        vc1.key = keyy
 //        self.ref?.child("Notes").child(keyy).removeValue()
 //        vc1.modalPresentationStyle = .fullScreen
 
@@ -154,7 +161,7 @@ class NoteViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
-            self.noteData.remove(at: indexPath.row)
+            //self.noteData.remove(at: indexPath.row)
             let keyid = self.key[indexPath.row]
 
             self.ref?.child("Notes").child(keyid).removeValue()
