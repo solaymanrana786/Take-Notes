@@ -8,6 +8,7 @@ target 'Take Notes' do
   # Pods for Take Notes
 	pod 'Firebase/Core'
   pod 'Firebase/Database'
+  
 
   target 'Take NotesTests' do
     inherit! :search_paths
