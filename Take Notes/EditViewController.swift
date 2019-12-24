@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAnalytics
 
 class EditViewController: UIViewController {
 
@@ -42,6 +43,7 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func backTapped(_ sender: Any) {
+        Analytics.logEvent("edited Back press", parameters: nil)
             onEdit()
         
 //        newtxt = textView.text
@@ -52,6 +54,7 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func saveTapped(_ sender: Any) {
+        Analytics.logEvent("Save Edited press", parameters: nil)
             onEdit()
 //        newtxt = textView.text
 //         self.ref?.child("Notes").childByAutoId().setValue(self.text)

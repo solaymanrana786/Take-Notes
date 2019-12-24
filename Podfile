@@ -8,6 +8,9 @@ target 'Take Notes' do
   # Pods for Take Notes
 	pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Analytics'
+  pod 'Fabric', '~> 1.10.2'
+  pod 'Crashlytics', '~> 3.14.0'
 
   target 'Take NotesTests' do
     inherit! :search_paths

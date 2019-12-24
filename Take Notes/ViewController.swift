@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAnalytics
+
 
 class ViewController: UIViewController {
 
@@ -30,14 +32,18 @@ class ViewController: UIViewController {
                } else {
                    print("TV is Empty...")
                }
-                 self.presentingViewController?.dismiss(animated: true, completion: nil)
+        
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func onSaveButtonTapped(_ sender: UIBarButtonItem) {
+        Analytics.logEvent("Save Button Pressed", parameters: nil)
        save()
     }
         
     @IBAction func onBackButtonTapped(_ sender: UIBarButtonItem) {
+        Analytics.logEvent("Back Button Pressed", parameters: nil)
         save()
     }
 
